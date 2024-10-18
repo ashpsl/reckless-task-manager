@@ -43,4 +43,9 @@ class TaskService
     {
         //
     }
+
+    public function get_last_inserted()
+    {
+        return Task::latest()->first();
+    }
 }

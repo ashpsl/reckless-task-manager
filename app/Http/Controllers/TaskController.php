@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
+use App\Models\Task;
 use App\Services\TaskService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -20,7 +22,9 @@ class TaskController extends Controller
 
         $taskService->create($validated['name'], $validated['description']);
 
-        return to_route('tasks_create');
+        $task = $taskService->get_last_inserted();
+
+        return to_route('tasks_edit', ['id' => $task->id]);
     }
 
     public function edit($id): View
