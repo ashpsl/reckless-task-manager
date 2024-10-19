@@ -7,8 +7,9 @@ use App\Models\Task;
 class TaskService
 {
     private $STATUS = [
-        'Open',
+        'New',
         'In Progress',
+        'Under Review',
         'Completed',
     ];
 
