@@ -18,7 +18,7 @@ class TaskService
 
         $task->name = $name;
         $task->description = $description;
-        $task->status = $this->STATUS[$status];
+        $task->status = $status;
 
         $task->save();
     }
@@ -34,7 +34,7 @@ class TaskService
 
         $task->name = $name;
         $task->description = $description;
-        $task->status = $this->STATUS[$status];
+        $task->status = $status;
 
         $task->save();
     }
