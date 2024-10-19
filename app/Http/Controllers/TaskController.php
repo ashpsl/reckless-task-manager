@@ -45,4 +45,10 @@ class TaskController extends Controller
 
         return to_route('tasks_edit', ['id' => $id]);
     }
+
+    public function list(TaskService $taskService): View
+    {
+        $tasks = $taskService->get_all();
+        return view('dashboard', ['tasks' => $tasks]);
+    }
 }

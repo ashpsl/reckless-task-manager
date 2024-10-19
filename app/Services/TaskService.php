@@ -49,4 +49,12 @@ class TaskService
     {
         return Task::latest()->first();
     }
+
+    public function get_all()
+    {
+        return array_map(function($task) {
+            $task['status'] = $this->STATUS[$task['status']];
+            return $task;
+        }, Task::all()->toArray());
+    }
 }

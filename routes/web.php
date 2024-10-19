@@ -8,9 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [TaskController::class, 'list'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/tasks/create', [TaskController::class, 'create'])
     ->middleware(['auth', 'verified'])->name('tasks_create');
