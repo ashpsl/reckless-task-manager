@@ -16,6 +16,9 @@ Route::get('/tasks/create', [TaskController::class, 'create'])
 Route::post('/tasks', [TaskController::class, 'store'])
     ->middleware(['auth', 'verified'])->name('tasks_store');
 
+Route::post('/tasks/change-status', [TaskController::class, 'status'])
+    ->middleware(['auth', 'verified'])->name('tasks_status');
+
 Route::get('/tasks/{id}', [TaskController::class, 'edit'])
     ->middleware(['auth', 'verified'])->name('tasks_edit');
 

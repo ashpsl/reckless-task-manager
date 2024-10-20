@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IncrementStatusRequest;
 use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
 use App\Services\TaskService;
@@ -50,5 +51,14 @@ class TaskController extends Controller
     {
         $tasks = $taskService->get_all();
         return view('dashboard', ['tasks' => $tasks]);
+    }
+
+    public function status(IncrementStatusRequest $request, TaskService $taskService): View
+    {
+        $validated = $request->validated();
+
+        $taskService->update_status($validated['id']);
+
+        return view('dashboard', ['tasks' => $taskService->get_all()]);
     }
 }
